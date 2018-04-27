@@ -1,0 +1,5 @@
+*.log
+FXerrors/
+Logs/
+*.pdb
+.idea/
