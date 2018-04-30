@@ -10,11 +10,11 @@
 #define braveEnsure(condition, msg, ...) if (!(condition)) printf(msg, __VA_ARGS__);
 
 #define braveAssertMsg(condition, msg, ...) if (!(condition)) { \
-                                            braveLog::braveLogAlways("In file %s in function %s on line %s:", __FILE__, __func__, __LINE__);\
+                                            braveLog::braveLogAlways("In file '%s' in function '%s' on line %d:", __FILE__, __PRETTY_FUNCTION__, __LINE__);\
                                             braveLog::braveLogAlways(msg, __VA_ARGS__);\
                                             assert(0); }
 #define braveEnsureMsg(condition, msg, ...) if (!(condition)) { \
-                                            braveLog::braveLogAlways("In file %s in function %s on line %s:", __FILE__, __func__, __LINE__);\
+                                            braveLog::braveLogAlways("In file '%s' in function '%s' on line %d:", __FILE__, __PRETTY_FUNCTION__, __LINE__);\
                                             braveLog::braveLogAlways(msg, __VA_ARGS__); \
                                             braveEnsure(condition, msg, __VA_ARGS__); }
 
@@ -38,8 +38,10 @@ public:
 
         va_list args;
         va_start (args, msg);
-        vsprintf(buffer, msg, args);
-        fprintf(logfile, "%s", buffer);
+        if (args) {
+            vsprintf(buffer, msg, args);
+            fprintf(logfile, "%s", buffer);
+        }
 
         fprintf(logfile, "\n");
     }

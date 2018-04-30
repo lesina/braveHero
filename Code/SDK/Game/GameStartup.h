@@ -3,9 +3,17 @@
 
 class GameStartup {
 public:
-    void start();
-    void update();
-    void stop();
+    static void init();
+    static void start();
+    static void update();
+    static void stop();
+
+private:
+    GameStartup() {};
+
+    GameStartup(GameStartup const &);
+
+    GameStartup &operator=(GameStartup const &);
 };
 
 

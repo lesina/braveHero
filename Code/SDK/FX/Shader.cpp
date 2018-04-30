@@ -1,6 +1,8 @@
 #include "Shader.h"
 #include "../../logging.h"
 
+Shader::Shader() {}
+
 Shader::Shader(const char *vertexPath, const char *fragmentPath) {
     braveAssertMsg(vertexPath && fragmentPath, "%s", "Not allocated arguments");
 
