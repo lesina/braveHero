@@ -2,7 +2,9 @@
 #define BRAVEHERO_HERO_H
 
 
-class Hero {
+#include "../GameObject.h"
+
+class Hero : public GameObject{
 
 };
 

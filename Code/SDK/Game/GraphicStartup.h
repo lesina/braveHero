@@ -14,8 +14,11 @@
 class GraphicStartup {
 public:
     static void init();
+
     static void update();
+
     static void stop();
+
     static bool WindowShouldNotClose();
 
 private:
@@ -34,10 +37,6 @@ private:
     static glm::vec3 cameraUp;
 
     static bool firstMouse;
-    static float yaw;
-    static float pitch;
-    static float lastX;
-    static float lastY;
     static float fov;
 
     static float deltaTime;
@@ -46,10 +45,11 @@ private:
     static Shader ourShader;
 
     static float vertices[];
+    static float vertices2[];
     static glm::vec3 cubePositions[];
 
     static unsigned int VBO, VAO;
-    static unsigned int texture1, texture2;
+    static unsigned int textureHero, textureBullet, textureEnemy;
 
     static int width, height, nrChannels;
     static unsigned char *data;
@@ -58,9 +58,11 @@ private:
 
     static void mouse_callback(GLFWwindow *window, double xpos, double ypos);
 
-    static void scroll_callback(GLFWwindow *window, double xoffset, double yoffset);
-
     static void processInput(GLFWwindow *window);
+
+    static void initTexture(unsigned int &, const char *);
+
+    static void BindTexture();
 };
 
 
